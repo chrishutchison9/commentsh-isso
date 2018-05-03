@@ -72,7 +72,7 @@ clean:
 	
 web:
 	python setup.py develop  # or `install`
-	cd isso/js; bower --allow-root install almond requirejs requirejs-text jade
+	cd isso/js; bower.py --allow-root install almond requirejs requirejs-text jade
 	make js
 	uwsgi uswgi2.ini
 
