@@ -476,12 +476,14 @@ define('app/config',[],function() {
         "max-comments-top": "inf",
         "max-comments-nested": 5,
         "reveal-on-click": 5,
+        "gravatar": false,
         "avatar": true,
         "avatar-bg": "#f0f0f0",
         "avatar-fg": ["#9abf88", "#5698c4", "#e279a3", "#9163b6",
                       "#be5168", "#f19670", "#e4bf80", "#447c69"].join(" "),
         "vote": true,
-        "vote-levels": null
+        "vote-levels": null,
+        "feed": false
     };
 
     var js = document.getElementsByTagName("script");
@@ -511,6 +513,8 @@ define('app/i18n/bg',{
     "postbox-author": "Име/псевдоним (незадължително)",
     "postbox-email": "Ел. поща (незадължително)",
     "postbox-website": "Уебсайт (незадължително)",
+    "postbox-preview": "преглед",
+    "postbox-edit": "Редактиране",
     "postbox-submit": "Публикуване",
     "num-comments": "1 коментар\n{{ n }} коментара",
     "no-comments": "Все още няма коментари",
@@ -539,6 +543,8 @@ define('app/i18n/cs',{
     "postbox-author": "Jméno (nepovinné)",
     "postbox-email": "E-mail (nepovinný)",
     "postbox-website": "Web (nepovinný)",
+    "postbox-preview": "Náhled",
+    "postbox-edit": "Upravit",
     "postbox-submit": "Publikovat",
     "num-comments": "Jeden komentář\n{{ n }} Komentářů",
     "no-comments": "Zatím bez komentářů",
@@ -567,6 +573,8 @@ define('app/i18n/da',{
     "postbox-author": "Name (optional)",
     "postbox-email": "E-mail (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Eksempel",
+    "postbox-edit": "Rediger",
     "postbox-submit": "Submit",
 
     "num-comments": "One Comment\n{{ n }} Comments",
@@ -598,6 +606,8 @@ define('app/i18n/de',{
     "postbox-author": "Name (optional)",
     "postbox-email": "Email (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Vorschau",
+    "postbox-edit": "Bearbeiten",
     "postbox-submit": "Abschicken",
     "num-comments": "1 Kommentar\n{{ n }} Kommentare",
     "no-comments": "Bisher keine Kommentare",
@@ -626,10 +636,13 @@ define('app/i18n/en',{
     "postbox-author": "Name (optional)",
     "postbox-email": "E-mail (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Preview",
+    "postbox-edit": "Edit",
     "postbox-submit": "Submit",
 
     "num-comments": "One Comment\n{{ n }} Comments",
     "no-comments": "No Comments Yet",
+    "atom-feed": "Atom feed",
 
     "comment-reply": "Reply",
     "comment-edit": "Edit",
@@ -657,6 +670,8 @@ define('app/i18n/fa',{
     "postbox-author": "اسم (اختیاری)",
     "postbox-email": "ایمیل (اختیاری)",
     "postbox-website": "سایت (اختیاری)",
+    "postbox-preview": "پیشنمایش",
+    "postbox-edit": "ویرایش",
     "postbox-submit": "ارسال",
 
     "num-comments": "یک نظر\n{{ n }} نظر",
@@ -688,6 +703,8 @@ define('app/i18n/fi',{
     "postbox-author": "Nimi (valinnainen)",
     "postbox-email": "Sähköposti (valinnainen)",
     "postbox-website": "Web-sivu (valinnainen)",
+    "postbox-preview": "Esikatselu",
+    "postbox-edit": "Muokkaa",
     "postbox-submit": "Lähetä",
 
     "num-comments": "Yksi kommentti\n{{ n }} kommenttia",
@@ -719,9 +736,12 @@ define('app/i18n/fr',{
     "postbox-author": "Nom (optionnel)",
     "postbox-email": "Courriel (optionnel)",
     "postbox-website": "Site web (optionnel)",
+    "postbox-preview": "Aperçu",
+    "postbox-edit": "Éditer",
     "postbox-submit": "Soumettre",
     "num-comments": "{{ n }} commentaire\n{{ n }} commentaires",
     "no-comments": "Aucun commentaire pour l'instant",
+    "atom-feed": "Flux Atom",
     "comment-reply": "Répondre",
     "comment-edit": "Éditer",
     "comment-save": "Enregistrer",
@@ -747,6 +767,8 @@ define('app/i18n/hr',{
     "postbox-author": "Ime (neobavezno)",
     "postbox-email": "E-mail (neobavezno)",
     "postbox-website": "Web stranica (neobavezno)",
+    "postbox-preview": "Pregled",
+    "postbox-edit": "Uredi",
     "postbox-submit": "Pošalji",
     "num-comments": "Jedan komentar\n{{ n }} komentara",
     "no-comments": "Još nema komentara",
@@ -775,6 +797,8 @@ define('app/i18n/hu',{
     "postbox-author": "Név (nem kötelező)",
     "postbox-email": "Email (nem kötelező)",
     "postbox-website": "Website (nem kötelező)",
+    "postbox-preview": "Előnézet",
+    "postbox-edit": "Szerekesztés",
     "postbox-submit": "Elküld",
     "num-comments": "Egy hozzászólás\n{{ n }} hozzászólás",
     "no-comments": "Eddig nincs hozzászólás",
@@ -803,6 +827,8 @@ define('app/i18n/ru',{
     "postbox-author": "Имя (необязательно)",
     "postbox-email": "Email (необязательно)",
     "postbox-website": "Сайт (необязательно)",
+    "postbox-preview": "Предпросмотр",
+    "postbox-edit": "Правка",
     "postbox-submit": "Отправить",
     "num-comments": "{{ n }} комментарий\n{{ n }} комментария\n{{ n }} комментариев",
     "no-comments": "Пока нет комментариев",
@@ -831,6 +857,8 @@ define('app/i18n/it',{
     "postbox-author": "Nome (opzionale)",
     "postbox-email": "E-mail (opzionale)",
     "postbox-website": "Sito web (opzionale)",
+    "postbox-preview": "Anteprima",
+    "postbox-edit": "Modifica",
     "postbox-submit": "Invia",
     "num-comments": "Un Commento\n{{ n }} Commenti",
     "no-comments": "Ancora Nessun Commento",
@@ -859,6 +887,8 @@ define('app/i18n/eo',{
     "postbox-author": "Nomo (malnepra)",
     "postbox-email": "Retadreso (malnepra)",
     "postbox-website": "Retejo (malnepra)",
+    "postbox-preview": "Antaŭrigardo",
+    "postbox-edit": "Redaktu",
     "postbox-submit": "Sendu",
     "num-comments": "{{ n }} komento\n{{ n }} komentoj",
     "no-comments": "Neniu komento ankoraŭ",
@@ -887,6 +917,8 @@ define('app/i18n/sv',{
     "postbox-author": "Namn (frivilligt)",
     "postbox-email": "E-mail (frivilligt)",
     "postbox-website": "Hemsida (frivilligt)",
+    "postbox-preview": "Förhandsvisning",
+    "postbox-edit": "Redigera",
     "postbox-submit": "Skicka",
     "num-comments": "En kommentar\n{{ n }} kommentarer",
     "no-comments": "Inga kommentarer än",
@@ -915,6 +947,8 @@ define('app/i18n/nl',{
     "postbox-author": "Naam (optioneel)",
     "postbox-email": "E-mail (optioneel)",
     "postbox-website": "Website (optioneel)",
+    "postbox-preview": "Voorbeeld",
+    "postbox-edit": "Bewerken",
     "postbox-submit": "Versturen",
     "num-comments": "Één reactie\n{{ n }} reacties",
     "no-comments": "Nog geen reacties",
@@ -943,6 +977,8 @@ define('app/i18n/el_GR',{
     "postbox-author": "Όνομα (προαιρετικό)",
     "postbox-email": "E-mail (προαιρετικό)",
     "postbox-website": "Ιστοσελίδα (προαιρετικό)",
+    "postbox-preview": "Πρεμιέρα",
+    "postbox-edit": "Επεξεργασία",
     "postbox-submit": "Υποβολή",
     "num-comments": "Ένα σχόλιο\n{{ n }} σχόλια",
     "no-comments": "Δεν υπάρχουν σχόλια",
@@ -971,6 +1007,8 @@ define('app/i18n/es',{
     "postbox-author": "Nombre (opcional)",
     "postbox-email": "E-mail (opcional)",
     "postbox-website": "Sitio web (opcional)",
+    "postbox-preview": "Avance",
+    "postbox-edit": "Editar",
     "postbox-submit": "Enviar",
     "num-comments": "Un Comentario\n{{ n }} Comentarios",
     "no-comments": "Sin Comentarios Todavía",
@@ -999,6 +1037,8 @@ define('app/i18n/vi',{
     "postbox-author": "Tên (tùy chọn)",
     "postbox-email": "E-mail (tùy chọn)",
     "postbox-website": "Website (tùy chọn)",
+    "postbox-preview": "Xem trước",
+    "postbox-edit": "Sửa",
     "postbox-submit": "Gửi",
 
     "num-comments": "Một bình luận\n{{ n }} bình luận",
@@ -1030,6 +1070,8 @@ define('app/i18n/zh_CN',{
     "postbox-author": "名字 (可选)",
     "postbox-email": "E-mail (可选)",
     "postbox-website": "网站 (可选)",
+    "postbox-preview": "预览",
+    "postbox-edit": "编辑",
     "postbox-submit": "提交",
 
     "num-comments": "1 条评论\n{{ n }} 条评论",
@@ -1061,6 +1103,8 @@ define('app/i18n/zh_TW',{
     "postbox-author": "名稱 (非必填)",
     "postbox-email": "電子信箱 (非必填)",
     "postbox-website": "個人網站 (非必填)",
+    "postbox-preview": "預覽",
+    "postbox-edit": "編輯",
     "postbox-submit": "送出",
 
     "num-comments": "1 則留言\n{{ n }} 則留言",
@@ -1468,6 +1512,24 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         return deferred.promise;
     };
 
+
+    var feed = function(tid) {
+        return endpoint + "/feed?" + qs({uri: tid || location});
+    };
+
+    var preview = function(text) {
+        var deferred = Q.defer();
+        curl("POST", endpoint + "/preview", JSON.stringify({text: text}),
+             function(rv) {
+                 if (rv.status === 200) {
+                     deferred.resolve(JSON.parse(rv.body).text);
+                 } else {
+                     deferred.reject(rv.body);
+                 }
+             });
+        return deferred.promise;
+    };
+
     return {
         endpoint: endpoint,
         salt: salt,
@@ -1479,7 +1541,9 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         fetch: fetch,
         count: count,
         like: like,
-        dislike: dislike
+        dislike: dislike,
+        feed: feed,
+        preview: preview
     };
 });
 
@@ -2065,21 +2129,25 @@ exports.DebugItem = function DebugItem(lineno, filename) {
 });
 define('jade',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
 
-define('jade!app/text/postbox', function () {  var fn = function template(locals) {
+define('jade!app/text/postbox', function () {  var wfn = function (jade) {    var fn = function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
 ;var locals_for_with = (locals || {});(function (author, email, i18n, website) {
-buf.push("<div class=\"isso-postbox\"><div class=\"form-wrapper\"><div class=\"textarea-wrapper\"><div contenteditable=\"true\" class=\"textarea placeholder\">" + (jade.escape(null == (jade_interp = i18n('postbox-text')) ? "" : jade_interp)) + "</div></div><section class=\"auth-section\"><p class=\"input-wrapper\"><input type=\"text\" name=\"author\"" + (jade.attr("placeholder", i18n('postbox-author'), true, false)) + (jade.attr("value", author !== null ? '' + (author) + '' : '', true, false)) + "/></p><p class=\"input-wrapper\"><input type=\"email\" name=\"email\"" + (jade.attr("placeholder", i18n('postbox-email'), true, false)) + (jade.attr("value", email != null ? '' + (email) + '' : '', true, false)) + "/></p><p class=\"input-wrapper\"><input type=\"text\" name=\"website\"" + (jade.attr("placeholder", i18n('postbox-website'), true, false)) + (jade.attr("value", website != null ? '' + (website) + '' : '', true, false)) + "/></p><p class=\"post-action\"><input type=\"submit\"" + (jade.attr("value", i18n('postbox-submit'), true, false)) + "/></p></section></div></div>");}.call(this,"author" in locals_for_with?locals_for_with.author:typeof author!=="undefined"?author:undefined,"email" in locals_for_with?locals_for_with.email:typeof email!=="undefined"?email:undefined,"i18n" in locals_for_with?locals_for_with.i18n:typeof i18n!=="undefined"?i18n:undefined,"website" in locals_for_with?locals_for_with.website:typeof website!=="undefined"?website:undefined));;return buf.join("");
-};  return fn;});
+buf.push("<div class=\"isso-postbox\"><div class=\"form-wrapper\"><div class=\"textarea-wrapper\"><div contenteditable=\"true\" class=\"textarea placeholder\">" + (jade.escape(null == (jade_interp = i18n('postbox-text')) ? "" : jade_interp)) + "</div><div class=\"preview\"><div class=\"isso-comment\"><div class=\"text-wrapper\"><div class=\"text\"></div></div></div></div></div><section class=\"auth-section\"><p class=\"input-wrapper\"><input type=\"text\" name=\"author\"" + (jade.attr("placeholder", i18n('postbox-author'), true, false)) + (jade.attr("value", author !== null ? '' + (author) + '' : '', true, false)) + "/></p><p class=\"input-wrapper\"><input type=\"email\" name=\"email\"" + (jade.attr("placeholder", i18n('postbox-email'), true, false)) + (jade.attr("value", email != null ? '' + (email) + '' : '', true, false)) + "/></p><p class=\"input-wrapper\"><input type=\"text\" name=\"website\"" + (jade.attr("placeholder", i18n('postbox-website'), true, false)) + (jade.attr("value", website != null ? '' + (website) + '' : '', true, false)) + "/></p><p class=\"post-action\"><input type=\"submit\"" + (jade.attr("value", i18n('postbox-submit'), true, false)) + "/></p><p class=\"post-action\"><input type=\"button\" name=\"preview\"" + (jade.attr("value", i18n('postbox-preview'), true, false)) + "/></p><p class=\"post-action\"><input type=\"button\" name=\"edit\"" + (jade.attr("value", i18n('postbox-edit'), true, false)) + "/></p></section></div></div>");}.call(this,"author" in locals_for_with?locals_for_with.author:typeof author!=="undefined"?author:undefined,"email" in locals_for_with?locals_for_with.email:typeof email!=="undefined"?email:undefined,"i18n" in locals_for_with?locals_for_with.i18n:typeof i18n!=="undefined"?i18n:undefined,"website" in locals_for_with?locals_for_with.website:typeof website!=="undefined"?website:undefined));;return buf.join("");
+};    return fn;  };wfn.compiled = true;return wfn;});
 
 
-define('jade!app/text/comment', function () {  var fn = function template(locals) {
+define('jade!app/text/comment', function () {  var wfn = function (jade) {    var fn = function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
 ;var locals_for_with = (locals || {});(function (bool, comment, conf, datetime, humanize, i18n, svg) {
 buf.push("<div" + (jade.attr("id", 'isso-' + (comment.id) + '', true, false)) + " class=\"isso-comment\">");
+if ( conf.gravatar)
+{
+buf.push("<div class=\"avatar\"><img" + (jade.attr("src", '' + (comment.gravatar_image) + '', true, false)) + "/></div>");
+}
 if ( conf.avatar)
 {
 buf.push("<div class=\"avatar\"><svg" + (jade.attr("data-hash", '' + (comment.hash) + '', true, false)) + "></svg></div>");
@@ -2108,16 +2176,16 @@ if ( conf.vote)
 buf.push("<a href=\"#\" class=\"upvote\">" + (null == (jade_interp = svg['arrow-up']) ? "" : jade_interp) + "</a><span class=\"spacer\">|</span><a href=\"#\" class=\"downvote\">" + (null == (jade_interp = svg['arrow-down']) ? "" : jade_interp) + "</a>");
 }
 buf.push("<a href=\"#\" class=\"reply\">" + (jade.escape((jade_interp = i18n('comment-reply')) == null ? '' : jade_interp)) + "</a><a href=\"#\" class=\"edit\">" + (jade.escape((jade_interp = i18n('comment-edit')) == null ? '' : jade_interp)) + "</a><a href=\"#\" class=\"delete\">" + (jade.escape((jade_interp = i18n('comment-delete')) == null ? '' : jade_interp)) + "</a></div><div class=\"isso-follow-up\"></div></div></div>");}.call(this,"bool" in locals_for_with?locals_for_with.bool:typeof bool!=="undefined"?bool:undefined,"comment" in locals_for_with?locals_for_with.comment:typeof comment!=="undefined"?comment:undefined,"conf" in locals_for_with?locals_for_with.conf:typeof conf!=="undefined"?conf:undefined,"datetime" in locals_for_with?locals_for_with.datetime:typeof datetime!=="undefined"?datetime:undefined,"humanize" in locals_for_with?locals_for_with.humanize:typeof humanize!=="undefined"?humanize:undefined,"i18n" in locals_for_with?locals_for_with.i18n:typeof i18n!=="undefined"?i18n:undefined,"svg" in locals_for_with?locals_for_with.svg:typeof svg!=="undefined"?svg:undefined));;return buf.join("");
-};  return fn;});
+};    return fn;  };wfn.compiled = true;return wfn;});
 
 
-define('jade!app/text/comment-loader', function () {  var fn = function template(locals) {
+define('jade!app/text/comment-loader', function () {  var wfn = function (jade) {    var fn = function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
 ;var locals_for_with = (locals || {});(function (comment, pluralize) {
 buf.push("<div" + (jade.attr("id", 'isso-loader-' + (comment.name) + '', true, false)) + " class=\"isso-comment-loader\"><a href=\"#\" class=\"load_hidden\">" + (jade.escape((jade_interp = pluralize('comment-hidden', comment.hidden_replies)) == null ? '' : jade_interp)) + "</a></div>");}.call(this,"comment" in locals_for_with?locals_for_with.comment:typeof comment!=="undefined"?comment:undefined,"pluralize" in locals_for_with?locals_for_with.pluralize:typeof pluralize!=="undefined"?pluralize:undefined));;return buf.join("");
-};  return fn;});
+};    return fn;  };wfn.compiled = true;return wfn;});
 
 define('app/jade',["libjs-jade-runtime", "app/utils", "jade!app/text/postbox", "jade!app/text/comment", "jade!app/text/comment-loader"], function(runtime, utils, tt_postbox, tt_comment, tt_comment_loader) {
     "use strict";
@@ -2128,6 +2196,9 @@ define('app/jade',["libjs-jade-runtime", "app/utils", "jade!app/text/postbox", "
     var load = function(name, js) {
         templates[name] = (function(jade) {
                 var fn;
+                if (js.compiled) {
+                    return js(jade);
+                }
                 eval("fn = " + js);
                 return fn;
             })(runtime);
@@ -2335,7 +2406,8 @@ define('app/isso',["app/dom", "app/utils", "app/config", "app/api", "app/jade", 
             el = $.htmlify(jade.render("postbox", {
             "author":  JSON.parse(localStorage.getItem("author")),
             "email":   JSON.parse(localStorage.getItem("email")),
-            "website": JSON.parse(localStorage.getItem("website"))
+            "website": JSON.parse(localStorage.getItem("website")),
+            "preview": ''
         }));
 
         // callback on success (e.g. to toggle the reply button)
@@ -2375,9 +2447,27 @@ define('app/isso',["app/dom", "app/utils", "app/config", "app/api", "app/jade", 
             $("[name='author']", el).placeholder.replace(/ \(.*\)/, "");
         }
 
+        // preview function
+        $("[name='preview']", el).on("click", function() {
+            api.preview(utils.text($(".textarea", el).innerHTML)).then(
+                function(html) {
+                    $(".preview .text", el).innerHTML = html;
+                    el.classList.add('preview-mode');
+                });
+        });
+
+        // edit function
+        var edit = function() {
+            $(".preview .text", el).innerHTML = '';
+            el.classList.remove('preview-mode');
+        };
+        $("[name='edit']", el).on("click", edit);
+        $(".preview", el).on("click", edit);
+
         // submit form, initialize optional fields with `null` and reset form.
         // If replied to a comment, remove form completely.
         $("[type=submit]", el).on("click", function() {
+            edit();
             if (! el.validate()) {
                 return;
             }
@@ -2552,7 +2642,7 @@ define('app/isso',["app/dom", "app/utils", "app/config", "app/api", "app/jade", 
         $("a.edit", footer).toggle("click",
             function(toggler) {
                 var edit = $("a.edit", footer);
-                var avatar = config["avatar"] ? $(".avatar", el, false)[0] : null;
+                var avatar = config["avatar"] || config["gravatar"] ? $(".avatar", el, false)[0] : null;
 
                 edit.textContent = i18n.translate("comment-save");
                 edit.insertAfter($.new("a.cancel", i18n.translate("comment-cancel"))).on("click", function() {
@@ -2580,7 +2670,7 @@ define('app/isso',["app/dom", "app/utils", "app/config", "app/api", "app/jade", 
             },
             function(toggler) {
                 var textarea = $(".textarea", text);
-                var avatar = config["avatar"] ? $(".avatar", el, false)[0] : null;
+                var avatar = config["avatar"] || config["gravatar"] ? $(".avatar", el, false)[0] : null;
 
                 if (! toggler.canceled && textarea !== null) {
                     if (utils.text(textarea.innerHTML).length < 3) {
@@ -2694,7 +2784,7 @@ define('app/count',["app/api", "app/dom", "app/i18n"], function(api, $, i18n) {
         var objs = {};
 
         $.each("a", function(el) {
-            if (! el.href.match(/#isso-thread$/)) {
+            if (! el.href.match || ! el.href.match(/#isso-thread$/)) {
                 return;
             }
 
@@ -2728,7 +2818,7 @@ define('app/count',["app/api", "app/dom", "app/i18n"], function(api, $, i18n) {
 
 define('text',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
 
-define('text!app/../../css/isso.css',[],function () { return '#isso-thread * {\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n}\n#isso-thread .isso-comment-header a {\n    text-decoration: none;\n}\n\n#isso-thread {\n    padding: 0;\n    margin: 0;\n}\n#isso-thread > h4 {\n    color: #555;\n    font-weight: bold;\n}\n#isso-thread .textarea {\n    min-height: 58px;\n    outline: 0;\n}\n#isso-thread .textarea.placeholder {\n    color: #757575;\n}\n\n.isso-comment {\n    max-width: 68em;\n    padding-top: 0.95em;\n    margin: 0.95em auto;\n}\n.isso-comment:not(:first-of-type),\n.isso-follow-up .isso-comment {\n    border-top: 1px solid rgba(0, 0, 0, 0.1);\n}\n.isso-comment > div.avatar,\n.isso-postbox > .avatar {\n    display: block;\n    float: left;\n    width: 7%;\n    margin: 3px 15px 0 0;\n}\n.isso-postbox > .avatar {\n    float: left;\n    margin: 5px 10px 0 5px;\n    width: 48px;\n    height: 48px;\n    overflow: hidden;\n}\n.isso-comment > div.avatar > svg,\n.isso-postbox > .avatar > svg {\n    max-width: 48px;\n    max-height: 48px;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 3px;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-comment > div.text-wrapper {\n    display: block;\n}\n.isso-comment .isso-follow-up {\n    padding-left: calc(7% + 20px);\n}\n.isso-comment > div.text-wrapper > .isso-comment-header, .isso-comment > div.text-wrapper > .isso-comment-footer {\n    font-size: 0.95em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header {\n    font-size: 0.85em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer {\n    padding: 0 6px;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer,\n.isso-comment > div.text-wrapper > .isso-comment-header a.permalink,\n.isso-comment > div.text-wrapper > .isso-comment-header .note,\n.isso-comment > div.text-wrapper > .isso-comment-header a.parent {\n    color: gray !important;\n    font-weight: normal;\n    text-shadow: none !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header a.permalink:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header .note:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header a.parent:hover {\n    color: #606060 !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .note {\n    float: right;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .author {\n    font-weight: bold;\n    color: #555;\n}\n.isso-comment > div.text-wrapper > .textarea-wrapper .textarea {\n    margin-top: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text p {\n    margin-top: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text p:last-child {\n    margin-bottom: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text h1,\n.isso-comment > div.text-wrapper > div.text h2,\n.isso-comment > div.text-wrapper > div.text h3,\n.isso-comment > div.text-wrapper > div.text h4,\n.isso-comment > div.text-wrapper > div.text h5,\n.isso-comment > div.text-wrapper > div.text h6 {\n    font-size: 130%;\n    font-weight: bold;\n}\n.isso-comment > div.text-wrapper > div.textarea-wrapper .textarea {\n    width: 100%;\n    border: 1px solid #f0f0f0;\n    border-radius: 2px;\n    box-shadow: 0 0 2px #888;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer {\n    font-size: 0.80em;\n    color: gray !important;\n    clear: left;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer a {\n    font-weight: bold;\n    text-decoration: none;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer a:hover {\n    color: #111111 !important;\n    text-shadow: #aaaaaa 0 0 1px !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer > a {\n    position: relative;\n    top: .2em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer > a + a {\n    padding-left: 1em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer .votes {\n    color: gray;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer .upvote svg,\n.isso-comment > div.text-wrapper > .isso-comment-footer .downvote svg {\n    position: relative;\n    top: .2em;\n}\n.isso-comment .isso-postbox {\n    margin-top: 0.8em;\n}\n.isso-comment.isso-no-votes span.votes {\n    display: none;\n}\n\n.isso-postbox {\n    max-width: 68em;\n    margin: 0 auto 2em;\n}\n.isso-postbox > .form-wrapper {\n    display: block;\n    padding: 0;\n}\n.isso-postbox > .form-wrapper > .auth-section,\n.isso-postbox > .form-wrapper > .auth-section .post-action {\n    display: block;\n}\n.isso-postbox > .form-wrapper .textarea {\n    margin: 0 0 .3em;\n    padding: .4em .8em;\n    border-radius: 3px;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n#isso-thread .textarea:focus,\n#isso-thread input:focus {\n    border-color: rgba(0, 0, 0, 0.8);\n}\n.isso-postbox > .form-wrapper > .auth-section .input-wrapper {\n    display: inline-block;\n    position: relative;\n    max-width: 25%;\n    margin: 0;\n}\n.isso-postbox > .form-wrapper > .auth-section .input-wrapper input {\n    padding: .3em 10px;\n    max-width: 100%;\n    border-radius: 3px;\n    background-color: #fff;\n    line-height: 1.4em;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action {\n    display: inline-block;\n    float: right;\n    margin: 0;\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input {\n    padding: calc(.3em - 1px);\n    border-radius: 2px;\n    border: 1px solid #CCC;\n    background-color: #DDD;\n    cursor: pointer;\n    outline: 0;\n    line-height: 1.4em;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input:hover {\n    background-color: #CCC;\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input:active {\n    background-color: #BBB;\n}\n@media screen and (max-width:600px) {\n    .isso-postbox > .form-wrapper > .auth-section .input-wrapper {\n        display: block;\n        max-width: 100%;\n        margin: 0 0 .3em;\n    }\n    .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {\n        width: 100%;\n    }\n    .isso-postbox > .form-wrapper > .auth-section .post-action {\n        display: block;\n        float: none;\n        text-align: right;\n    }\n}\n';});
+define('text!app/../../css/isso.css',[],function () { return '#isso-thread * {\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n}\n#isso-thread .isso-comment-header a {\n    text-decoration: none;\n}\n\n#isso-thread {\n    padding: 0;\n    margin: 0;\n}\n#isso-thread > h4 {\n    color: #555;\n    font-weight: bold;\n}\n#isso-thread > .isso-feedlink {\n    float: right;\n    padding-left: 1em;\n}\n#isso-thread > .isso-feedlink > a {\n    font-size: 0.8em;\n    vertical-align: bottom;\n}\n#isso-thread .textarea {\n    min-height: 58px;\n    outline: 0;\n}\n#isso-thread .textarea.placeholder {\n    color: #757575;\n}\n\n#isso-root .isso-comment {\n    max-width: 68em;\n    padding-top: 0.95em;\n    margin: 0.95em auto;\n}\n#isso-root .preview .isso-comment {\n    padding-top: 0;\n    margin: 0;\n}\n#isso-root .isso-comment:not(:first-of-type),\n.isso-follow-up .isso-comment {\n    border-top: 1px solid rgba(0, 0, 0, 0.1);\n}\n.isso-comment > div.avatar {\n    display: block;\n    float: left;\n    width: 7%;\n    margin: 3px 15px 0 0;\n}\n.isso-comment > div.avatar > svg {\n    max-width: 48px;\n    max-height: 48px;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 3px;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-comment > div.text-wrapper {\n    display: block;\n}\n.isso-comment .isso-follow-up {\n    padding-left: calc(7% + 20px);\n}\n.isso-comment > div.text-wrapper > .isso-comment-header, .isso-comment > div.text-wrapper > .isso-comment-footer {\n    font-size: 0.95em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header {\n    font-size: 0.85em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer {\n    padding: 0 6px;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer,\n.isso-comment > div.text-wrapper > .isso-comment-header a.permalink,\n.isso-comment > div.text-wrapper > .isso-comment-header .note,\n.isso-comment > div.text-wrapper > .isso-comment-header a.parent {\n    color: gray !important;\n    font-weight: normal;\n    text-shadow: none !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .spacer:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header a.permalink:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header .note:hover,\n.isso-comment > div.text-wrapper > .isso-comment-header a.parent:hover {\n    color: #606060 !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .note {\n    float: right;\n}\n.isso-comment > div.text-wrapper > .isso-comment-header .author {\n    font-weight: bold;\n    color: #555;\n}\n.isso-comment > div.text-wrapper > .textarea-wrapper .textarea,\n.isso-comment > div.text-wrapper > .textarea-wrapper .preview {\n    margin-top: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text p {\n    margin-top: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text p:last-child {\n    margin-bottom: 0.2em;\n}\n.isso-comment > div.text-wrapper > div.text h1,\n.isso-comment > div.text-wrapper > div.text h2,\n.isso-comment > div.text-wrapper > div.text h3,\n.isso-comment > div.text-wrapper > div.text h4,\n.isso-comment > div.text-wrapper > div.text h5,\n.isso-comment > div.text-wrapper > div.text h6 {\n    font-size: 130%;\n    font-weight: bold;\n}\n.isso-comment > div.text-wrapper > div.textarea-wrapper .textarea,\n.isso-comment > div.text-wrapper > div.textarea-wrapper .preview {\n    width: 100%;\n    border: 1px solid #f0f0f0;\n    border-radius: 2px;\n    box-shadow: 0 0 2px #888;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer {\n    font-size: 0.80em;\n    color: gray !important;\n    clear: left;\n}\n.isso-feedlink,\n.isso-comment > div.text-wrapper > .isso-comment-footer a {\n    font-weight: bold;\n    text-decoration: none;\n}\n.isso-feedlink:hover,\n.isso-comment > div.text-wrapper > .isso-comment-footer a:hover {\n    color: #111111 !important;\n    text-shadow: #aaaaaa 0 0 1px !important;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer > a {\n    position: relative;\n    top: .2em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer > a + a {\n    padding-left: 1em;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer .votes {\n    color: gray;\n}\n.isso-comment > div.text-wrapper > .isso-comment-footer .upvote svg,\n.isso-comment > div.text-wrapper > .isso-comment-footer .downvote svg {\n    position: relative;\n    top: .2em;\n}\n.isso-comment .isso-postbox {\n    margin-top: 0.8em;\n}\n.isso-comment.isso-no-votes span.votes {\n    display: none;\n}\n\n.isso-postbox {\n    max-width: 68em;\n    margin: 0 auto 2em;\n    clear: right;\n}\n.isso-postbox > .form-wrapper {\n    display: block;\n    padding: 0;\n}\n.isso-postbox > .form-wrapper > .auth-section,\n.isso-postbox > .form-wrapper > .auth-section .post-action {\n    display: block;\n}\n.isso-postbox > .form-wrapper .textarea,\n.isso-postbox > .form-wrapper .preview {\n    margin: 0 0 .3em;\n    padding: .4em .8em;\n    border-radius: 3px;\n    background-color: #fff;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n#isso-thread .textarea:focus,\n#isso-thread input:focus {\n    border-color: rgba(0, 0, 0, 0.8);\n}\n.isso-postbox > .form-wrapper > .auth-section .input-wrapper {\n    display: inline-block;\n    position: relative;\n    max-width: 25%;\n    margin: 0;\n}\n.isso-postbox > .form-wrapper > .auth-section .input-wrapper input {\n    padding: .3em 10px;\n    max-width: 100%;\n    border-radius: 3px;\n    background-color: #fff;\n    line-height: 1.4em;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action {\n    display: inline-block;\n    float: right;\n    margin: 0 0 0 5px;\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input {\n    padding: calc(.3em - 1px);\n    border-radius: 2px;\n    border: 1px solid #CCC;\n    background-color: #DDD;\n    cursor: pointer;\n    outline: 0;\n    line-height: 1.4em;\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input:hover {\n    background-color: #CCC;\n}\n.isso-postbox > .form-wrapper > .auth-section .post-action > input:active {\n    background-color: #BBB;\n}\n.isso-postbox > .form-wrapper .preview,\n.isso-postbox > .form-wrapper input[name="edit"],\n.isso-postbox.preview-mode > .form-wrapper input[name="preview"],\n.isso-postbox.preview-mode > .form-wrapper .textarea {\n    display: none;\n}\n.isso-postbox.preview-mode > .form-wrapper .preview {\n    display: block;\n}\n.isso-postbox.preview-mode > .form-wrapper input[name="edit"] {\n    display: inline;\n}\n.isso-postbox > .form-wrapper .preview {\n    background-color: #f8f8f8;\n    background: repeating-linear-gradient(\n        -45deg,\n        #f8f8f8,\n        #f8f8f8 10px,\n        #fff 10px,\n        #fff 20px\n    );\n}\n@media screen and (max-width:600px) {\n    .isso-postbox > .form-wrapper > .auth-section .input-wrapper {\n        display: block;\n        max-width: 100%;\n        margin: 0 0 .3em;\n    }\n    .isso-postbox > .form-wrapper > .auth-section .input-wrapper input {\n        width: 100%;\n    }\n}\n';});
 
 define('app/text/css',["text!../../../css/isso.css"], function(isso) {
     return {
@@ -2778,6 +2868,13 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
             return console.log("abort, #isso-thread is missing");
         }
 
+        if (config["feed"]) {
+            var feedLink = $.new('a', i18n.translate('atom-feed'));
+            var feedLinkWrapper = $.new('span.isso-feedlink');
+            feedLink.href = api.feed($("#isso-thread").getAttribute("data-isso-id"));
+            feedLinkWrapper.append(feedLink);
+            $("#isso-thread").append(feedLinkWrapper);
+        }
         $("#isso-thread").append($.new('h4'));
         $("#isso-thread").append(new isso.Postbox(null));
         $("#isso-thread").append('<div id="isso-root"></div>');

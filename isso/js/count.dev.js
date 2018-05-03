@@ -737,6 +737,24 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         return deferred.promise;
     };
 
+
+    var feed = function(tid) {
+        return endpoint + "/feed?" + qs({uri: tid || location});
+    };
+
+    var preview = function(text) {
+        var deferred = Q.defer();
+        curl("POST", endpoint + "/preview", JSON.stringify({text: text}),
+             function(rv) {
+                 if (rv.status === 200) {
+                     deferred.resolve(JSON.parse(rv.body).text);
+                 } else {
+                     deferred.reject(rv.body);
+                 }
+             });
+        return deferred.promise;
+    };
+
     return {
         endpoint: endpoint,
         salt: salt,
@@ -748,7 +766,9 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         fetch: fetch,
         count: count,
         like: like,
-        dislike: dislike
+        dislike: dislike,
+        feed: feed,
+        preview: preview
     };
 });
 
@@ -990,12 +1010,14 @@ define('app/config',[],function() {
         "max-comments-top": "inf",
         "max-comments-nested": 5,
         "reveal-on-click": 5,
+        "gravatar": false,
         "avatar": true,
         "avatar-bg": "#f0f0f0",
         "avatar-fg": ["#9abf88", "#5698c4", "#e279a3", "#9163b6",
                       "#be5168", "#f19670", "#e4bf80", "#447c69"].join(" "),
         "vote": true,
-        "vote-levels": null
+        "vote-levels": null,
+        "feed": false
     };
 
     var js = document.getElementsByTagName("script");
@@ -1025,6 +1047,8 @@ define('app/i18n/bg',{
     "postbox-author": "Име/псевдоним (незадължително)",
     "postbox-email": "Ел. поща (незадължително)",
     "postbox-website": "Уебсайт (незадължително)",
+    "postbox-preview": "преглед",
+    "postbox-edit": "Редактиране",
     "postbox-submit": "Публикуване",
     "num-comments": "1 коментар\n{{ n }} коментара",
     "no-comments": "Все още няма коментари",
@@ -1053,6 +1077,8 @@ define('app/i18n/cs',{
     "postbox-author": "Jméno (nepovinné)",
     "postbox-email": "E-mail (nepovinný)",
     "postbox-website": "Web (nepovinný)",
+    "postbox-preview": "Náhled",
+    "postbox-edit": "Upravit",
     "postbox-submit": "Publikovat",
     "num-comments": "Jeden komentář\n{{ n }} Komentářů",
     "no-comments": "Zatím bez komentářů",
@@ -1081,6 +1107,8 @@ define('app/i18n/da',{
     "postbox-author": "Name (optional)",
     "postbox-email": "E-mail (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Eksempel",
+    "postbox-edit": "Rediger",
     "postbox-submit": "Submit",
 
     "num-comments": "One Comment\n{{ n }} Comments",
@@ -1112,6 +1140,8 @@ define('app/i18n/de',{
     "postbox-author": "Name (optional)",
     "postbox-email": "Email (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Vorschau",
+    "postbox-edit": "Bearbeiten",
     "postbox-submit": "Abschicken",
     "num-comments": "1 Kommentar\n{{ n }} Kommentare",
     "no-comments": "Bisher keine Kommentare",
@@ -1140,10 +1170,13 @@ define('app/i18n/en',{
     "postbox-author": "Name (optional)",
     "postbox-email": "E-mail (optional)",
     "postbox-website": "Website (optional)",
+    "postbox-preview": "Preview",
+    "postbox-edit": "Edit",
     "postbox-submit": "Submit",
 
     "num-comments": "One Comment\n{{ n }} Comments",
     "no-comments": "No Comments Yet",
+    "atom-feed": "Atom feed",
 
     "comment-reply": "Reply",
     "comment-edit": "Edit",
@@ -1171,6 +1204,8 @@ define('app/i18n/fa',{
     "postbox-author": "اسم (اختیاری)",
     "postbox-email": "ایمیل (اختیاری)",
     "postbox-website": "سایت (اختیاری)",
+    "postbox-preview": "پیشنمایش",
+    "postbox-edit": "ویرایش",
     "postbox-submit": "ارسال",
 
     "num-comments": "یک نظر\n{{ n }} نظر",
@@ -1202,6 +1237,8 @@ define('app/i18n/fi',{
     "postbox-author": "Nimi (valinnainen)",
     "postbox-email": "Sähköposti (valinnainen)",
     "postbox-website": "Web-sivu (valinnainen)",
+    "postbox-preview": "Esikatselu",
+    "postbox-edit": "Muokkaa",
     "postbox-submit": "Lähetä",
 
     "num-comments": "Yksi kommentti\n{{ n }} kommenttia",
@@ -1233,9 +1270,12 @@ define('app/i18n/fr',{
     "postbox-author": "Nom (optionnel)",
     "postbox-email": "Courriel (optionnel)",
     "postbox-website": "Site web (optionnel)",
+    "postbox-preview": "Aperçu",
+    "postbox-edit": "Éditer",
     "postbox-submit": "Soumettre",
     "num-comments": "{{ n }} commentaire\n{{ n }} commentaires",
     "no-comments": "Aucun commentaire pour l'instant",
+    "atom-feed": "Flux Atom",
     "comment-reply": "Répondre",
     "comment-edit": "Éditer",
     "comment-save": "Enregistrer",
@@ -1261,6 +1301,8 @@ define('app/i18n/hr',{
     "postbox-author": "Ime (neobavezno)",
     "postbox-email": "E-mail (neobavezno)",
     "postbox-website": "Web stranica (neobavezno)",
+    "postbox-preview": "Pregled",
+    "postbox-edit": "Uredi",
     "postbox-submit": "Pošalji",
     "num-comments": "Jedan komentar\n{{ n }} komentara",
     "no-comments": "Još nema komentara",
@@ -1289,6 +1331,8 @@ define('app/i18n/hu',{
     "postbox-author": "Név (nem kötelező)",
     "postbox-email": "Email (nem kötelező)",
     "postbox-website": "Website (nem kötelező)",
+    "postbox-preview": "Előnézet",
+    "postbox-edit": "Szerekesztés",
     "postbox-submit": "Elküld",
     "num-comments": "Egy hozzászólás\n{{ n }} hozzászólás",
     "no-comments": "Eddig nincs hozzászólás",
@@ -1317,6 +1361,8 @@ define('app/i18n/ru',{
     "postbox-author": "Имя (необязательно)",
     "postbox-email": "Email (необязательно)",
     "postbox-website": "Сайт (необязательно)",
+    "postbox-preview": "Предпросмотр",
+    "postbox-edit": "Правка",
     "postbox-submit": "Отправить",
     "num-comments": "{{ n }} комментарий\n{{ n }} комментария\n{{ n }} комментариев",
     "no-comments": "Пока нет комментариев",
@@ -1345,6 +1391,8 @@ define('app/i18n/it',{
     "postbox-author": "Nome (opzionale)",
     "postbox-email": "E-mail (opzionale)",
     "postbox-website": "Sito web (opzionale)",
+    "postbox-preview": "Anteprima",
+    "postbox-edit": "Modifica",
     "postbox-submit": "Invia",
     "num-comments": "Un Commento\n{{ n }} Commenti",
     "no-comments": "Ancora Nessun Commento",
@@ -1373,6 +1421,8 @@ define('app/i18n/eo',{
     "postbox-author": "Nomo (malnepra)",
     "postbox-email": "Retadreso (malnepra)",
     "postbox-website": "Retejo (malnepra)",
+    "postbox-preview": "Antaŭrigardo",
+    "postbox-edit": "Redaktu",
     "postbox-submit": "Sendu",
     "num-comments": "{{ n }} komento\n{{ n }} komentoj",
     "no-comments": "Neniu komento ankoraŭ",
@@ -1401,6 +1451,8 @@ define('app/i18n/sv',{
     "postbox-author": "Namn (frivilligt)",
     "postbox-email": "E-mail (frivilligt)",
     "postbox-website": "Hemsida (frivilligt)",
+    "postbox-preview": "Förhandsvisning",
+    "postbox-edit": "Redigera",
     "postbox-submit": "Skicka",
     "num-comments": "En kommentar\n{{ n }} kommentarer",
     "no-comments": "Inga kommentarer än",
@@ -1429,6 +1481,8 @@ define('app/i18n/nl',{
     "postbox-author": "Naam (optioneel)",
     "postbox-email": "E-mail (optioneel)",
     "postbox-website": "Website (optioneel)",
+    "postbox-preview": "Voorbeeld",
+    "postbox-edit": "Bewerken",
     "postbox-submit": "Versturen",
     "num-comments": "Één reactie\n{{ n }} reacties",
     "no-comments": "Nog geen reacties",
@@ -1457,6 +1511,8 @@ define('app/i18n/el_GR',{
     "postbox-author": "Όνομα (προαιρετικό)",
     "postbox-email": "E-mail (προαιρετικό)",
     "postbox-website": "Ιστοσελίδα (προαιρετικό)",
+    "postbox-preview": "Πρεμιέρα",
+    "postbox-edit": "Επεξεργασία",
     "postbox-submit": "Υποβολή",
     "num-comments": "Ένα σχόλιο\n{{ n }} σχόλια",
     "no-comments": "Δεν υπάρχουν σχόλια",
@@ -1485,6 +1541,8 @@ define('app/i18n/es',{
     "postbox-author": "Nombre (opcional)",
     "postbox-email": "E-mail (opcional)",
     "postbox-website": "Sitio web (opcional)",
+    "postbox-preview": "Avance",
+    "postbox-edit": "Editar",
     "postbox-submit": "Enviar",
     "num-comments": "Un Comentario\n{{ n }} Comentarios",
     "no-comments": "Sin Comentarios Todavía",
@@ -1513,6 +1571,8 @@ define('app/i18n/vi',{
     "postbox-author": "Tên (tùy chọn)",
     "postbox-email": "E-mail (tùy chọn)",
     "postbox-website": "Website (tùy chọn)",
+    "postbox-preview": "Xem trước",
+    "postbox-edit": "Sửa",
     "postbox-submit": "Gửi",
 
     "num-comments": "Một bình luận\n{{ n }} bình luận",
@@ -1544,6 +1604,8 @@ define('app/i18n/zh_CN',{
     "postbox-author": "名字 (可选)",
     "postbox-email": "E-mail (可选)",
     "postbox-website": "网站 (可选)",
+    "postbox-preview": "预览",
+    "postbox-edit": "编辑",
     "postbox-submit": "提交",
 
     "num-comments": "1 条评论\n{{ n }} 条评论",
@@ -1575,6 +1637,8 @@ define('app/i18n/zh_TW',{
     "postbox-author": "名稱 (非必填)",
     "postbox-email": "電子信箱 (非必填)",
     "postbox-website": "個人網站 (非必填)",
+    "postbox-preview": "預覽",
+    "postbox-edit": "編輯",
     "postbox-submit": "送出",
 
     "num-comments": "1 則留言\n{{ n }} 則留言",
@@ -1715,7 +1779,7 @@ define('app/count',["app/api", "app/dom", "app/i18n"], function(api, $, i18n) {
         var objs = {};
 
         $.each("a", function(el) {
-            if (! el.href.match(/#isso-thread$/)) {
+            if (! el.href.match || ! el.href.match(/#isso-thread$/)) {
                 return;
             }
 
